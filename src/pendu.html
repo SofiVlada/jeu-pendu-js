@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/rec-htm|40/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <title>Pendu</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="knockout-3.2.0.js"></script>
+  <script type="text/javascript" src="penduFunctions.js" defer="defer"></script>
+</head>
+<body>
+	<h2>Guess my name !</h2>
+	<img src="pendu.jpg"/>
+	<form>
+	    <p>Enter a letter: <input type="text" name="entry" pattern="[A-Za-z]{1}" data-bind="value: currentLetter, valueUpdate: 'keyup',event: { keyup: validateConditions }"/></p>
+	    <div data-bind="foreach: secretWordDisplayed">
+	        <input style="width: 10px;" enabled="false" data-bind="value: $data" disabled/>
+	    </div>
+	    <br/>
+	    <input type="submit" value="Try it!" data-bind="click: revealSecretWord, enable: isEnabled()"/>
+	    <p>Failed tries: <input type="text" name="wrong_entries" data-bind="value: wrongLetters" disabled/></p>
+	    <p>Number of tries left: <input type="text" name="count_tries_left" data-bind="value: countTriesLeft" disabled/></p>
+	    <label data-bind="text: gameWon, visible: gameWon().length > 0"/>
+	</form>
+</body>
+</html>
